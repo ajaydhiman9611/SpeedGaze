@@ -20,7 +20,7 @@ const style = {
 export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
     const [modalData, setModalData] = React.useState(data);
     const handleChange = (e) => {
-        console.log("Handle Change: ", e.target.name, e.target.value)
+        // console.log("Handle Change: ", e.target.name, e.target.value)
         setModalData({
             ...modalData,
             [e.target.name]: e.target.value
