@@ -1,0 +1,12 @@
+@media only screen and (max-width: 600px) {
+    #modalBox {
+      width: 90%;
+    }
+    #outlined-basic{
+        width: 100%
+    }
+  }
+
+.col-sm-12.col-xs-12{
+    margin-bottom: 15px;
+}

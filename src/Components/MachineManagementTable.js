@@ -11,7 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
+// import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -33,6 +33,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Grid from '@mui/material/Grid';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { FormControl } from '@mui/material';
+import AddorEditModal from './partialsMachineManagement/AddOrEditModal';
 
 
 // function descendingComparator(a, b, orderBy) {
@@ -146,6 +147,24 @@ export const MachineManagementTable = () => {
 
     }, [cpu, nodeType, searchQuery])
 
+
+    // Add or Edit Modal -------------------------------------------------------
+    const [modal, setModal] = React.useState({
+        open: false,
+        addOrEdit: ""
+    })
+    const handleOpen = (data) => setModal({
+        addOrEdit: "Edit",
+        open: true,
+        data: data
+    });
+    const handleClose = () => setModal({
+        addOrEdit: "Edit",
+        open: false
+    });
+
+    // Add or Edit Modal -------------------------------------------------------
+
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
@@ -210,7 +229,13 @@ export const MachineManagementTable = () => {
     }
     return (
         <>
-
+            {modal.open &&
+                <AddorEditModal
+                    open={modal.open}
+                    handleClose={handleClose}
+                    addOrEdit={modal.addOrEdit}
+                    data={modal.data}
+                />}
             <Box id="tableContainer" sx={{
                 width: '100%',
                 height: fullScreen ? "100%" : "auto",
@@ -368,8 +393,10 @@ export const MachineManagementTable = () => {
                                                     <TableCell >{row.Mac_Address}</TableCell>
                                                     <TableCell >{row.Node_Type}</TableCell>
                                                     <TableCell>
-                                                        <EditIcon />
-                                                        <span style={{ paddingTop: "-10px" }}>Edit</span>
+                                                        <Button onClick={() => handleOpen(row)}>
+                                                            <EditIcon />
+                                                            <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
+                                                        </Button>
                                                     </TableCell>
                                                 </TableRow>
                                             );
