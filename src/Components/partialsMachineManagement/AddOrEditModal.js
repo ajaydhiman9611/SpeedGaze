@@ -14,7 +14,7 @@ const style = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    // p: 4,
 };
 
 export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
@@ -34,11 +34,11 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Typography id="modal-modal-title" style={{ background: "#d2ccfc", paddingLeft: "10px" }} variant="h6" component="h2">
+                <Typography id="modal-modal-title" style={{ background: "#d2ccfc", paddingLeft: "10px", padding: "2%" }} variant="h6" component="h2">
                     {addOrEdit} a Machine.
                 </Typography>
                 <br />
-                <div id="modal-modal-description" sx={{ mt: 2 }}>
+                <div id="modal-modal-description" sx={{ mt: 2 }} style={{ padding: "0 5% 5% 5%" }}>
                     <div className="row">
                         <div className="col-6">
                             <TextField onChange={handleChange} id="outlined-basic" label="Display Name" name="display_Name" variant="outlined" value={modalData.display_Name || ""} />
@@ -71,12 +71,12 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                             <TextField onChange={handleChange} id="outlined-basic" label="Node Type" name="Node_Type" variant="outlined" value={modalData.Node_Type || ""} />
                         </div>
                     </div>
-                </div>
-                <br />
-                <br />
-                <div align="right">
-                    <Button variant="outlined" onClick={handleClose}>Cancel</Button> &nbsp;&nbsp;&nbsp;
-                    <Button variant="contained" onClick={handleClose}>Submit</Button>
+                    <br />
+                    <br />
+                    <div align="right">
+                        <Button variant="outlined" onClick={handleClose}>Cancel</Button> &nbsp;&nbsp;&nbsp;
+                        <Button variant="contained" onClick={handleClose}>Submit</Button>
+                    </div>
                 </div>
             </Box>
         </Modal>
