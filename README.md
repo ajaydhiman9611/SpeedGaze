@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
-=======
+
 # SpeedGaze
->>>>>>> 1fc4ff1013f92abbe5464af87eb001ef9899b358
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
