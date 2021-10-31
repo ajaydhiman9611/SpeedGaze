@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
 // import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -22,6 +23,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
 import EditIcon from '@mui/icons-material/Edit';
+import AddorEditModal from './partialsMachineManagement/AddOrEditModal';
 
 
 // function descendingComparator(a, b, orderBy) {
@@ -53,7 +55,7 @@ import EditIcon from '@mui/icons-material/Edit';
 // }
 
 
-const headCells = ["Display Name", "Node name", "Node IP", "RAM", "CPU", "Rack", "Mac Address", "Node type","Actions"];
+const headCells = ["Display Name", "Node name", "Node IP", "RAM", "CPU", "Rack", "Mac Address", "Node type", "Actions"];
 
 export const MachineManagementTable = () => {
     const [order, setOrder] = React.useState('asc');
@@ -61,6 +63,24 @@ export const MachineManagementTable = () => {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+
+    // Add or Edit Modal -------------------------------------------------------
+    const [modal, setModal] = React.useState({
+        open: false,
+        addOrEdit: ""
+    })
+    const handleOpen = (data) => setModal({
+        addOrEdit: "Edit",
+        open: true,
+        data: data
+    });
+    const handleClose = () => setModal({
+        addOrEdit: "Edit",
+        open: false
+    });
+
+    // Add or Edit Modal -------------------------------------------------------
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -88,6 +108,15 @@ export const MachineManagementTable = () => {
 
     return (
         <>
+            {modal.open &&
+                <AddorEditModal
+                    open={modal.open}
+                    handleClose={handleClose}
+                    addOrEdit={modal.addOrEdit}
+                    data={modal.data}
+                />}
+
+
             {/* ---------------------------- TODO: Filters for NodeType and CPU --------------------------- */}
             <label>Filter1</label>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,7 +139,7 @@ export const MachineManagementTable = () => {
                             <TableBody>
                                 {
                                     // stableSort(data, getComparator(order, orderBy))
-                                        data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                         .map((row, index) => {
                                             const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -130,8 +159,10 @@ export const MachineManagementTable = () => {
                                                     <TableCell >{row.Mac_Address}</TableCell>
                                                     <TableCell >{row.Node_Type}</TableCell>
                                                     <TableCell>
-                                                        <EditIcon />
-                                                        <span style={{ paddingTop: "-10px" }}>Edit</span>
+                                                        <Button onClick={() => handleOpen(row)}>
+                                                            <EditIcon />
+                                                            <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
+                                                        </Button>
                                                     </TableCell>
                                                 </TableRow>
                                             );
@@ -223,21 +254,21 @@ function EnhancedTableHead(props) {
 
     return (
         <TableHead>
-            <TableRow style={{background: "#d2ccfc"}}>
+            <TableRow style={{ background: "#d2ccfc" }}>
                 {headCells.map((headCell, i) => (
                     <TableCell
                         key={i}
                         align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
-                        // sortDirection={orderBy === i ? order : false}
+                    // sortDirection={orderBy === i ? order : false}
                     >
                         {/* <TableSortLabel
                             active={orderBy === i}
                             direction={orderBy === i ? order : 'asc'}
                             onClick={createSortHandler(i)}
                         > */}
-                            {headCell}
-                            {/* {orderBy === i ? (
+                        {headCell}
+                        {/* {orderBy === i ? (
                                 <Box component="span" sx={visuallyHidden}>
                                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                                 </Box>
