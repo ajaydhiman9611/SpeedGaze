@@ -5,9 +5,10 @@ const { Provider } = ThemeContext;
 
 const ThemeProvider = ({ children }) => {
 
-    const [themeState, setThemeState] = useState("darker");
+    const [themeState, setThemeState] = useState(localStorage.getItem("sg-theme") || "darker");
 
     const setTheme = theme => {
+        localStorage.setItem("sg-theme", theme);
         console.log("Called!", theme);
         setThemeState(theme);
     }

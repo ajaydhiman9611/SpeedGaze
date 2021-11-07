@@ -9,8 +9,26 @@ body {
   padding-top: 14px;
 }
 
-.themeBar{
+#hideOnLargerScreen {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #hideOnLargerScreen {
+    display: inline;
+    padding-left: 25px;
+  }
+  .themeBar > svg {
+    margin-top: 19px;
+  }
+}
+
+.themeBar {
   margin-right: 25px;
+}
+.themeBar > svg {
+  margin-top: 9px;
 }
 
 /* ---------------------- Theme SLider ---------------------------------- */
@@ -81,7 +99,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 /* ---------------------- Theme Slider ---------------------------------- */
-
 
 .bg-light {
   background-color: white;
