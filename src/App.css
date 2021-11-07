@@ -1,4 +1,10 @@
-.MuiTablePagination-selectLabel .css-pdct74-MuiTablePagination-selectLabel, 
-.MuiTablePagination-displayedRows .css-levciy-MuiTablePagination-displayedRows{
-    padding-top: 14px
+@import url("https://use.typekit.net/dcr0tgs.css");
+
+body {
+  font-family: acumin-pro, sans-serif;
+}
+
+.MuiTablePagination-selectLabel .css-pdct74-MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows .css-levciy-MuiTablePagination-displayedRows {
+  padding-top: 14px;
 }

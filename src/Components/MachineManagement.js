@@ -9,15 +9,21 @@ export const MachineManagement = () => {
             <br />
 
             <br />
-            <div style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginBottom: "25px",
-                alignItems: "center"
-            }}>
-                <div> <h5 style={{
-                    fontWeight: "bold"
-                }}>Machine Management</h5></div>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "25px",
+                    alignItems: "center"
+                }}>
+                <div>
+                    <h5
+                        style={{
+                            fontWeight: "bold"
+                        }}>
+                        Machine Management
+                    </h5>
+                </div>
                 <div>
                     <Button variant="contained"
                         sx={{ ml: 2 }}

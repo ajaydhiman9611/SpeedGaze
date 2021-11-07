@@ -14,6 +14,7 @@ const style = {
     bgcolor: 'background.paper',
     border: '1px solid #000',
     boxShadow: 24,
+    fontFamily: "acumin-pro, sans-serif"
 };
 
 export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
@@ -39,16 +40,14 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                 </Typography>
                 <br />
                 <div id="modal-modal-description" sx={{ mt: 2 }} style={{ padding: "0 5% 5% 5%" }}>
-                    <div className="row">
+                    <div className="row onSmallScreen" style={{ paddingTop: "20px" }}>
                         <div className="col-lg-6 col-sm-12 col-xs-12">
                             <TextField onChange={handleChange} id="outlined-basic" label="Display Name" name="display_Name" variant="outlined" value={modalData.display_Name || ""} />
                         </div>
                         <div className="col-lg-6 col-sm-12 col-xs-12">
                             <TextField onChange={handleChange} id="outlined-basic" label="Node Name" name="node_Name" variant="outlined" value={modalData.node_Name || ""} />
                         </div>
-                        {/* </div> */}
                         <br />
-                        {/* <div className="row"> */}
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
                             <TextField onChange={handleChange} id="outlined-basic" label="Node IP" name="node_IP" variant="outlined" value={modalData.node_IP || ""} />
                         </div>
@@ -71,12 +70,10 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                             <TextField onChange={handleChange} id="outlined-basic" label="Node Type" name="Node_Type" variant="outlined" value={modalData.Node_Type || ""} />
                         </div>
                     </div>
-                    <br />
-                    <br />
-                    <div align="right">
-                        <Button variant="outlined" onClick={handleClose}>Cancel</Button> &nbsp; &nbsp; &nbsp;
-                        <Button variant="contained" onClick={handleClose}>Submit</Button>
-                    </div>
+                </div>
+                <div align="right" style={{ padding: "5% 5% 5% 5%"}}>
+                    <Button variant="outlined" onClick={handleClose}>Cancel</Button> &nbsp; &nbsp; &nbsp;
+                    <Button variant="contained" onClick={handleClose}>Submit</Button>
                 </div>
             </Box>
         </Modal>

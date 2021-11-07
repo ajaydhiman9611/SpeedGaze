@@ -140,7 +140,7 @@ export const MachineManagementTable = () => {
         if (searchQuery) {
             filtered = filtered.filter(x =>
                 Object.values(x).some(val =>
-                    String(val).toLowerCase().includes(searchQuery)
+                    String(val).toLowerCase().includes(searchQuery.toString().toLowerCase())
                 ));
         }
         setDatas(filtered)
@@ -162,7 +162,6 @@ export const MachineManagementTable = () => {
         addOrEdit: "Edit",
         open: false
     });
-
     // Add or Edit Modal -------------------------------------------------------
 
     const handleRequestSort = (event, property) => {
@@ -193,7 +192,7 @@ export const MachineManagementTable = () => {
     // function to handle if fullscreen mode is exited by "esc" key 
     // it calls every time when we exit from fullscreen and set "setFullScreen()" to false
     function onExitFullScreen() {
-        if (fs_status() == -1) {
+        if (fs_status() === -1) {
             setFullScreen(false)
         }
     }
@@ -256,11 +255,12 @@ export const MachineManagementTable = () => {
                             <FormControl fullWidth sx={{
                                 mb: 2
                             }} >
-                                <InputLabel id="CPU">CPU</InputLabel>
+                                <InputLabel style={{ fontFamily: "acumin-pro, sans-serif" }} id="CPU">CPU</InputLabel>
                                 <Select
                                     sx={{
                                         backgroundColor: "#e9eeff",
-                                        mr: 2
+                                        mr: 2,
+                                        fontFamily: "acumin-pro, sans-serif"
                                     }}
                                     value={cpu}
                                     size="small"
@@ -284,11 +284,12 @@ export const MachineManagementTable = () => {
                             <FormControl fullWidth sx={{
                                 mb: 2
                             }}>
-                                <InputLabel id="node">Age</InputLabel>
+                                <InputLabel id="node">CPU</InputLabel>
                                 <Select
                                     sx={{
                                         backgroundColor: "#e9eeff",
-                                        mr: 2
+                                        mr: 2,
+                                        fontFamily: "acumin-pro, sans-serif"
                                     }}
                                     labelId="node"
                                     id="demo-simple-select"
@@ -384,15 +385,15 @@ export const MachineManagementTable = () => {
                                                     tabIndex={-1}
                                                     key={row.name}
                                                 >
-                                                    <TableCell >{row.display_Name}</TableCell>
-                                                    <TableCell >{row.node_Name}</TableCell>
-                                                    <TableCell >{row.node_IP}</TableCell>
-                                                    <TableCell >{row.RAM}</TableCell>
-                                                    <TableCell >{row.CPU}</TableCell>
-                                                    <TableCell >{row.Rack}</TableCell>
-                                                    <TableCell >{row.Mac_Address}</TableCell>
-                                                    <TableCell >{row.Node_Type}</TableCell>
-                                                    <TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.display_Name}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_Name}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_IP}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.RAM}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.CPU}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Rack}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Mac_Address}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Node_Type}</TableCell>
+                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }}>
                                                         <Button onClick={() => handleOpen(row)}>
                                                             <EditIcon />
                                                             <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
@@ -405,6 +406,7 @@ export const MachineManagementTable = () => {
                         </Table>
                     </TableContainer>
                     <TablePagination
+                        style={{ fontFamily: "acumin-pro, sans-serif !important" }}
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
                         count={datas.length}
@@ -491,6 +493,7 @@ function EnhancedTableHead(props) {
             <TableRow style={{ background: "#e9eeff" }}>
                 {headCells.map((headCell, i) => (
                     <TableCell
+                        style={{ fontFamily: "acumin-pro, sans-serif", fontWeight: "700" }}
                         key={i}
                         align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
