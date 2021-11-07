@@ -1,20 +1,36 @@
+import React, { useContext, useEffect, useState } from 'react'
 import { MachineManagement } from './Components/MachineManagement';
-import { Navbar } from './Components/Navbar';
+import { Navbar } from './Components/Navbar/Navbar';
 import { ThemeProvider } from './context/ThemeContext';
+import { ThemeContext } from './context/ThemeContext'
+import './App.css';
 
 function App() {
+
   return (
     <ThemeProvider>
-      <div className="App">
-        <header>
-          <Navbar />
-        </header>
-        <section className="container-fluid">
-          <MachineManagement />
-        </section>
-      </div>
+      <PageToRender />
     </ThemeProvider>
   );
 }
-
 export default App;
+
+const PageToRender = () => {
+  const themeContext = useContext(ThemeContext);
+  const { themeState } = themeContext;
+
+    useEffect(() => {
+      document.body.classList.toggle(`bg-${themeState}`)
+  },[])
+
+  return (
+    <div className={`App bg-${themeState}`}>
+      <header>
+        <Navbar />
+      </header>
+      <section className="container-fluid">
+        <MachineManagement />
+      </section>
+    </div>
+  )
+}

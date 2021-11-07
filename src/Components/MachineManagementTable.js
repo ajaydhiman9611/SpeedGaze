@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import PropTypes from 'prop-types'
-
+import '../App.css'
 import { data } from '../data'
 // import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -34,6 +34,8 @@ import Grid from '@mui/material/Grid';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { FormControl } from '@mui/material';
 import AddorEditModal from './partialsMachineManagement/AddOrEditModal';
+
+import { ThemeContext } from '../context/ThemeContext'
 
 
 // function descendingComparator(a, b, orderBy) {
@@ -115,6 +117,14 @@ function fs_status() {
 const headCells = ["Display Name", "Node name", "Node IP", "RAM", "CPU", "Rack", "Mac Address", "Node type", "Actions"];
 
 export const MachineManagementTable = () => {
+
+    const themeContext = useContext(ThemeContext);
+    const { themeState } = themeContext;
+
+    useEffect(() => {
+        document.body.classList.toggle(`bg-${themeState}`)
+    },[])
+
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
@@ -235,14 +245,14 @@ export const MachineManagementTable = () => {
                     addOrEdit={modal.addOrEdit}
                     data={modal.data}
                 />}
-            <Box id="tableContainer" sx={{
+            <Box id="tableContainer" className={`bg-${themeState}`} sx={{
                 width: '100%',
                 height: fullScreen ? "100%" : "auto",
-                backgroundColor: "#fff",
+                // backgroundColor: "#fff",
                 overflowY: fullScreen ? "auto" : "unset",
                 padding: fullScreen ? "20px" : "0"
             }}>
-                <Box sx={{ width: '100%', mb: 3, justifyContent: "space-between", display: "flex" }} >
+                <Box className={`bg-${themeState}`} sx={{ width: '100%', mb: 3, justifyContent: "space-between", display: "flex" }} >
                     {/* <div> */}
                     {/* ---------------------------- TODO: Filters for NodeType and CPU --------------------------- */}
                     {/* <label>Filter1</label>
@@ -252,13 +262,16 @@ export const MachineManagementTable = () => {
 
                     <Grid container>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
-                            <FormControl fullWidth sx={{
-                                mb: 2
-                            }} >
+                            <FormControl
+                                className={`font-${themeState}`}
+                                fullWidth sx={{
+                                    mb: 2
+                                }} >
                                 <InputLabel style={{ fontFamily: "acumin-pro, sans-serif" }} id="CPU">CPU</InputLabel>
                                 <Select
+                                    className={`font-${themeState}`}
                                     sx={{
-                                        backgroundColor: "#e9eeff",
+                                        backgroundColor: "#00bdf2",
                                         mr: 2,
                                         fontFamily: "acumin-pro, sans-serif"
                                     }}
@@ -281,13 +294,16 @@ export const MachineManagementTable = () => {
                             </FormControl>
                         </Grid>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
-                            <FormControl fullWidth sx={{
-                                mb: 2
-                            }}>
-                                <InputLabel id="node">CPU</InputLabel>
+                            <FormControl
+                                className={`font-${themeState}`}
+                                fullWidth sx={{
+                                    mb: 2
+                                }}>
+                                <InputLabel id="node">Node Type</InputLabel>
                                 <Select
+                                    className={`font-${themeState}`}
                                     sx={{
-                                        backgroundColor: "#e9eeff",
+                                        backgroundColor: "#00bdf2",
                                         mr: 2,
                                         fontFamily: "acumin-pro, sans-serif"
                                     }}
@@ -295,7 +311,7 @@ export const MachineManagementTable = () => {
                                     id="demo-simple-select"
                                     size="small"
                                     value={nodeType}
-                                    label="CPU"
+                                    label="Node Type"
                                     onChange={(event) => {
                                         setNodeType(event.target.value)
                                     }}
@@ -311,11 +327,13 @@ export const MachineManagementTable = () => {
                             </FormControl>
                         </Grid>
                         <Grid xs={12} sm={12} md={6} lg={6} xl={2} sx={{ display: "flex", justifyContent: "flex-end" }}>
-                            <TextField sx={{
-                                backgroundColor: "#e9eeff",
-                                mr: 2,
-                                mb: 2
-                            }} size="small"
+                            <TextField
+                                className={`font-${themeState}`}
+                                sx={{
+                                    backgroundColor: "#00bdf2",
+                                    mr: 2,
+                                    mb: 2
+                                }} size="small"
                                 label="Search"
                                 onChange={(e) => {
                                     setSearchQuery(e.target.value);
@@ -323,22 +341,22 @@ export const MachineManagementTable = () => {
                             />
                             {
                                 fullScreen ?
-                                    <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                    <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
                                         exitFullScreen(setFullScreen)
-                                    }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                    }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
                                         goFullScreen("tableContainer", setFullScreen)
                                     }}>  <OpenInFullIcon />  </Button>
                             }
                             <Button variant="contained"
                                 sx={{ ml: 2, mb: 2 }}
-                                style={{ backgroundColor: "#e9eeff", color: "#000" }}
+                                style={{ backgroundColor: "#00bdf2", color: "#000" }}
                             >  <Download />  </Button>
                         </Grid>
                     </Grid>
                     {/* </div> */}
                     {/* <div>
                         <TextField sx={{
-                            backgroundColor: "#e9eeff",
+                            backgroundColor: "#00bdf2",
                             mr: 2
                         }} size="small"
                             label="Search"
@@ -348,21 +366,21 @@ export const MachineManagementTable = () => {
                         />
                         {
                             fullScreen ?
-                                <Button variant="contained" style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                <Button variant="contained" style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
                                     exitFullScreen(setFullScreen)
-                                }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
                                     goFullScreen("tableContainer", setFullScreen)
                                 }}>  <OpenInFullIcon />  </Button>
                         }
                         <Button variant="contained"
                             sx={{ ml: 2 }}
-                            style={{ backgroundColor: "#e9eeff", color: "#000" }}
+                            style={{ backgroundColor: "#00bdf2", color: "#000" }}
                         >  <Download />  </Button>
                     </div> */}
                 </Box>
                 <Paper sx={{ width: '100%', mb: 2 }}>
                     <TableContainer>
-                        <Table>
+                        <Table className={`${themeState === 'light' ? `table-striped` : `table-dark`} font-${themeState}`}>
                             <EnhancedTableHead
                                 numSelected={selected.length}
                                 order={order}
@@ -385,15 +403,15 @@ export const MachineManagementTable = () => {
                                                     tabIndex={-1}
                                                     key={row.name}
                                                 >
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.display_Name}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_Name}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_IP}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.RAM}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.CPU}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Rack}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Mac_Address}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Node_Type}</TableCell>
-                                                    <TableCell style={{ fontFamily: "acumin-pro, sans-serif" }}>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.display_Name}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_Name}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_IP}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.RAM}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.CPU}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Rack}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Mac_Address}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Node_Type}</TableCell>
+                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }}>
                                                         <Button onClick={() => handleOpen(row)}>
                                                             <EditIcon />
                                                             <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
@@ -406,6 +424,7 @@ export const MachineManagementTable = () => {
                         </Table>
                     </TableContainer>
                     <TablePagination
+                        className={`bg-${themeState} font-${themeState}`}
                         style={{ fontFamily: "acumin-pro, sans-serif !important" }}
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
@@ -490,7 +509,7 @@ function EnhancedTableHead(props) {
 
     return (
         <TableHead>
-            <TableRow style={{ background: "#e9eeff" }}>
+            <TableRow style={{ background: "#00bdf2" }}>
                 {headCells.map((headCell, i) => (
                     <TableCell
                         style={{ fontFamily: "acumin-pro, sans-serif", fontWeight: "700" }}
