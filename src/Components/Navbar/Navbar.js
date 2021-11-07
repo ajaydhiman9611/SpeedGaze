@@ -6,7 +6,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 import logo from "../../assets/brand_Logo.png"
 
@@ -69,30 +69,37 @@ export const Navbar = () => {
                         <span className="nav-link"><input class="form-control mr-sm-2 headerSearch" type="search" placeholder="Search" aria-label="Search" /></span>
                     </li> */}
                     <li className="nav-item themeBar">
-                        <span
-                            style={{ width: "fit-content", verticalAlign: "middle", textAlign: "center" }}>
-                            <NightsStayIcon style={{ color: "grey", paddingTop: "5px" }} />
-                            &nbsp; &nbsp;
-                            <label className="switch">
-                                <input type="checkbox" onClick={changeTheme} />
-                                <span className="slider round"></span>
-                            </label>
-                            &nbsp; &nbsp;
-                            <Brightness7Icon style={{ color: "grey", paddingTop: "5px" }} />
+                        <span className="nav-link">
+                            {themeState === "darker"
+                                ?
+                                <WbSunnyIcon id="theme-icon" onClick={changeTheme} style={{ color: "grey", cursor: "pointer" }} />
+                                :
+                                <NightsStayIcon id="theme-icon" onClick={changeTheme} style={{ color: "grey", cursor: "pointer" }} />
+                            }
+                            <span htmlFor="theme-icon" id="hideOnLargerScreen">Toggle Theme</span>
                         </span>
                     </li>
                     <li className="nav-item ">
-                        <span className="nav-link"><AccountTreeIcon /></span>
+                        <span className="nav-link">
+                            <AccountTreeIcon />
+                            <span id="hideOnLargerScreen">Project and Jobs</span>
+                        </span>
                     </li>
                     <li className="nav-item">
-                        <span className="nav-link"><SettingsIcon /></span>
+                        <span className="nav-link">
+                            <SettingsIcon />
+                            <span id="hideOnLargerScreen">Settings</span>
+                        </span>
                     </li>
                     <li className="nav-item ">
-                        <span className="nav-link"><NotificationsIcon /></span>
+                        <span className="nav-link">
+                            <NotificationsIcon />
+                            <span id="hideOnLargerScreen">Notifications</span>
+                        </span>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <PersonIcon /> <span></span> Hello Rahul
+                            <PersonIcon /> <span id="hideOnLargerScreen">Hello Rahul</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item">Profile</a>
@@ -101,6 +108,6 @@ export const Navbar = () => {
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav >
     )
 }
