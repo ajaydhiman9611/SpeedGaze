@@ -21,11 +21,12 @@ const PageToRender = () => {
 
   useEffect(() => {
     document.body.classList.remove(`bg-${themeState}`)
-    document.body.classList.add(`bg-${themeState === `light` ? `darker` : `light`}`)
+    document.body.classList.add(`bg-${themeState === `light` ? `light` : `darker`}`)
   }, [themeState])
 
   return (
     <div className={`App bg-${themeState}`}>
+      {console.log("Rendered!")}
       <header>
         <Navbar />
       </header>
