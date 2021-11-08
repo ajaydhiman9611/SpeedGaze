@@ -19,9 +19,10 @@ const PageToRender = () => {
   const themeContext = useContext(ThemeContext);
   const { themeState } = themeContext;
 
-    useEffect(() => {
-      document.body.classList.toggle(`bg-${themeState}`)
-  },[])
+  useEffect(() => {
+    document.body.classList.remove(`bg-${themeState}`)
+    document.body.classList.add(`bg-${themeState === `light` ? `darker` : `light`}`)
+  }, [themeState])
 
   return (
     <div className={`App bg-${themeState}`}>

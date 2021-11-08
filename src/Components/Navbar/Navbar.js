@@ -76,7 +76,7 @@ export const Navbar = () => {
                                 :
                                 <NightsStayIcon id="theme-icon" onClick={changeTheme} style={{ color: "grey", cursor: "pointer" }} />
                             }
-                            <span htmlFor="theme-icon" id="hideOnLargerScreen">Toggle Theme</span>
+                            <span htmlFor="theme-icon" id="hideOnLargerScreen" onClick={changeTheme}>Toggle Theme</span>
                         </span>
                     </li>
                     <li className="nav-item ">
