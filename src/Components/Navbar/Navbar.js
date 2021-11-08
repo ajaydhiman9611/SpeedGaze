@@ -64,7 +64,7 @@ export const Navbar = () => {
                         </span>
                     </li>
                 </ul>
-                <ul className="navbar-nav ml-auto ">
+                <ul className="navbar-nav ml-auto navbar_right">
                     {/* <li className="nav-item active mr-lg-4">
                         <span className="nav-link"><input class="form-control mr-sm-2 headerSearch" type="search" placeholder="Search" aria-label="Search" /></span>
                     </li> */}
@@ -76,7 +76,7 @@ export const Navbar = () => {
                                 :
                                 <NightsStayIcon id="theme-icon" onClick={changeTheme} style={{ color: "grey", cursor: "pointer" }} />
                             }
-                            <span htmlFor="theme-icon" id="hideOnLargerScreen">Toggle Theme</span>
+                            <span htmlFor="theme-icon" id="hideOnLargerScreen" onClick={changeTheme}>Toggle Theme</span>
                         </span>
                     </li>
                     <li className="nav-item ">

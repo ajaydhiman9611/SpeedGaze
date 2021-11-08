@@ -35,3 +35,44 @@
     transform: translateY(40px);
     transition: transform .3s;
 }
+#hideOnLargerScreen {
+    display: none;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 991px) {
+
+    #hideOnLargerScreen {
+        display: inline;
+        padding-left: 20px;
+    }
+
+    .themeBar>svg {
+        margin-top: 19px;
+    }
+
+    .MuiTextField-root {
+        width: 100%;
+    }
+
+    .navbar_right .nav-item {
+        margin-right: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar_right .nav-item:last-child {
+        margin-right: 0;
+        border-bottom: 0px solid #ddd;
+    }
+}
+
+.themeBar {
+    margin-right: 25px;
+}
+
+.themeBar>svg {
+    margin-top: 9px;
+}
