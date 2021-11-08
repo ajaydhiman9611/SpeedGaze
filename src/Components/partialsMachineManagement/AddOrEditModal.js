@@ -46,32 +46,32 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                 <div id="modal-modal-description" className={`bg-${themeState}`} sx={{ mt: 2 }} style={{ padding: "0 5% 5% 5%" }}>
                     <div className="row onSmallScreen" style={{ paddingTop: "20px" }}>
                         <div className="col-lg-6 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Display Name" name="display_Name" variant="outlined" value={modalData.display_Name || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField`} onChange={handleChange} id="outlined-basic" label="Display Name" name="display_Name" variant="outlined" value={modalData.display_Name || ""} />
                         </div>
                         <div className="col-lg-6 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Node Name" name="node_Name" variant="outlined" value={modalData.node_Name || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="Node Name" name="node_Name" variant="outlined" value={modalData.node_Name || ""} />
                         </div>
                         <br />
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Node IP" name="node_IP" variant="outlined" value={modalData.node_IP || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="Node IP" name="node_IP" variant="outlined" value={modalData.node_IP || ""} />
                         </div>
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="RAM" name="RAM" variant="outlined" value={modalData.RAM || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="RAM" name="RAM" variant="outlined" value={modalData.RAM || ""} />
                         </div>
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="CPU" name="CPU" variant="outlined" value={modalData.CPU || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="CPU" name="CPU" variant="outlined" value={modalData.CPU || ""} />
                         </div>
                         {/* </div> */}
                         <br />
                         {/* <div className="row"> */}
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Rack" name="Rack" variant="outlined" value={modalData.Rack || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="Rack" name="Rack" variant="outlined" value={modalData.Rack || ""} />
                         </div>
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Mac Address" name="Mac_Address" variant="outlined" value={modalData.Mac_Address || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="Mac Address" name="Mac_Address" variant="outlined" value={modalData.Mac_Address || ""} />
                         </div>
                         <div className="col-xl-4 col-lg-4 col-sm-12 col-xs-12">
-                            <TextField className={`font-${themeState}`} onChange={handleChange} id="outlined-basic" label="Node Type" name="Node_Type" variant="outlined" value={modalData.Node_Type || ""} />
+                            <TextField className={`font-${themeState} smallScreenTextField` } onChange={handleChange} id="outlined-basic" label="Node Type" name="Node_Type" variant="outlined" value={modalData.Node_Type || ""} />
                         </div>
                     </div>
                 </div>
