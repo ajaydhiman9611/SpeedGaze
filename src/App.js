@@ -1,9 +1,30 @@
+import React, { useContext, useEffect, useState } from 'react'
 import { MachineManagement } from './Components/MachineManagement';
 import { Navbar } from './Components/Navbar/Navbar';
+import { ThemeProvider } from './context/ThemeContext';
+import { ThemeContext } from './context/ThemeContext'
 import './App.css';
+
 function App() {
+
   return (
-    <div className="App">
+    <ThemeProvider>
+      <PageToRender />
+    </ThemeProvider>
+  );
+}
+export default App;
+
+const PageToRender = () => {
+  const themeContext = useContext(ThemeContext);
+  const { themeState } = themeContext;
+
+    useEffect(() => {
+      document.body.classList.toggle(`bg-${themeState}`)
+  },[])
+
+  return (
+    <div className={`App bg-${themeState}`}>
       <header>
         <Navbar />
       </header>
@@ -11,7 +32,5 @@ function App() {
         <MachineManagement />
       </section>
     </div>
-  );
+  )
 }
-
-export default App;
