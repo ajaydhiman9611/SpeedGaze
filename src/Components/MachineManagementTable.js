@@ -253,13 +253,6 @@ export const MachineManagementTable = () => {
                 padding: fullScreen ? "20px" : "0"
             }}>
                 <Box className={`bg-${themeState}`} sx={{ width: '100%', mb: 3, justifyContent: "space-between", display: "flex" }} >
-                    {/* <div> */}
-                    {/* ---------------------------- TODO: Filters for NodeType and CPU --------------------------- */}
-                    {/* <label>Filter1</label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>Filter1</label> */}
-                    {/* ---------------------------- TODO: Filters for NodeType and CPU --------------------------- */}
-
                     <Grid container>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
                             <label>CPU</label>
@@ -268,7 +261,7 @@ export const MachineManagementTable = () => {
                             }} >
                                 {/* <InputLabel id="CPU">CPU</InputLabel> */}
                                 <Select
-                                    className="mr-0 mr-md-3"
+                                    className="mr-0 mr-md-3 filterSelect"
                                     sx={{
                                         backgroundColor: "#e9eeff",
                                         mr: 2,
@@ -293,13 +286,13 @@ export const MachineManagementTable = () => {
                             </FormControl>
                         </Grid>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
-                            <label>Age</label>
+                            <label>Node Type</label>
                             <FormControl fullWidth sx={{
                                 mb: 2
                             }}>
                                 {/* <InputLabel id="node">Age</InputLabel> */}
                                 <Select
-                                    className="mr-0 mr-md-3"
+                                    className="mr-0 mr-md-3 filterSelect"
                                     sx={{
                                         backgroundColor: "#e9eeff",
                                         mr: 2,
@@ -328,7 +321,7 @@ export const MachineManagementTable = () => {
                             <TextField
                                 className={`font-${themeState}`}
                                 sx={{
-                                    backgroundColor: "#00bdf2",
+                                    backgroundColor: "#e9eeff",
                                     mr: 2,
                                     mb: 2
                                 }} size="small"
@@ -402,15 +395,15 @@ export const MachineManagementTable = () => {
                                                     tabIndex={-1}
                                                     key={row.name}
                                                 >
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.display_Name}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_Name}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.node_IP}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.RAM}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.CPU}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Rack}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Mac_Address}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }} >{row.Node_Type}</TableCell>
-                                                    <TableCell className={`td-${themeState}`} style={{ fontFamily: "acumin-pro, sans-serif" }}>
+                                                    <TableCell className={`td td-${themeState}`} >{row.display_Name}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.node_Name}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.node_IP}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.RAM}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.CPU}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.Rack}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.Mac_Address}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`} >{row.Node_Type}</TableCell>
+                                                    <TableCell className={`td td-${themeState}`}>
                                                         <Button onClick={() => handleOpen(row)}>
                                                             <EditIcon />
                                                             <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>

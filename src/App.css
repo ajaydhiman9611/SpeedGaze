@@ -9,7 +9,6 @@ body {
   padding-top: 14px;
 }
 
-
 /* ---------------------- Theme SLider ---------------------------------- */
 
 /* The switch - the box around the slider */
@@ -55,15 +54,15 @@ body {
   transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: #2196f3;
 }
 
-input:focus+.slider {
+input:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(32px);
   -ms-transform: translateX(32px);
   transform: translateX(32px);
@@ -80,6 +79,19 @@ input:checked+.slider:before {
 
 /* ---------------------- Theme Slider ---------------------------------- */
 
+.filterSelect {
+  outline: grey solid 2px;
+}
+.filterSelect > .MuiOutlinedInput-input.MuiInputBase-input {
+  border: 1px solid grey;
+}
+
+.filterSelect:hover,
+.filterSelect:focus,
+.filterSelect:active {
+  outline: #00bdf2 solid 2px;
+}
+
 .bg-light {
   background-color: white;
   color: black;
@@ -90,27 +102,32 @@ input:checked+.slider:before {
   color: white;
 }
 
+.td {
+  padding: 6px !important;
+  font-family: "acumin-pro, sans-serif" !important;
+  font-size: 16px !important;
+}
+
 .td-darker {
   color: white !important;
 }
 
 .font-darker,
-.font-darker>label,
-.font-darker>div>input {
+.font-darker > label,
+.font-darker > div > input {
   color: white !important;
 }
 
-.font-darker > .MuiInputLabel-formControl{
+.font-darker > .MuiInputLabel-formControl {
   background-color: #2b2b2b;
 }
 
-
-.font-darker>div>input {
+.font-darker > div > input {
   outline: white solid 1px;
 }
 
 .font-light,
-.font-light>label {
+.font-light > label {
   color: black !important;
 }
 
