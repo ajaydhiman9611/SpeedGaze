@@ -64,12 +64,12 @@ export const Navbar = () => {
                         </span>
                     </li>
                 </ul>
-                <ul className="navbar-nav ml-auto ">
+                <ul className="navbar-nav ml-auto navbar_right">
                     {/* <li className="nav-item active mr-lg-4">
                         <span className="nav-link"><input class="form-control mr-sm-2 headerSearch" type="search" placeholder="Search" aria-label="Search" /></span>
                     </li> */}
                     <li className="nav-item themeBar">
-                        <span className="nav-link">
+                        <span className="nav-link d-flex align-items-center">
                             {themeState === "darker"
                                 ?
                                 <WbSunnyIcon id="theme-icon" onClick={changeTheme} style={{ color: "grey", cursor: "pointer" }} />
@@ -80,19 +80,19 @@ export const Navbar = () => {
                         </span>
                     </li>
                     <li className="nav-item ">
-                        <span className="nav-link">
+                        <span className="nav-link d-flex align-items-center">
                             <AccountTreeIcon />
                             <span id="hideOnLargerScreen">Project and Jobs</span>
                         </span>
                     </li>
                     <li className="nav-item">
-                        <span className="nav-link">
+                        <span className="nav-link d-flex align-items-center">
                             <SettingsIcon />
                             <span id="hideOnLargerScreen">Settings</span>
                         </span>
                     </li>
                     <li className="nav-item ">
-                        <span className="nav-link">
+                        <span className="nav-link d-flex align-items-center">
                             <NotificationsIcon />
                             <span id="hideOnLargerScreen">Notifications</span>
                         </span>
