@@ -253,14 +253,15 @@ export const MachineManagementTable = () => {
 
                     <Grid container>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
+                            <label>CPU</label>
                             <FormControl fullWidth sx={{
                                 mb: 2
                             }} >
-                                <InputLabel id="CPU">CPU</InputLabel>
+                                {/* <InputLabel id="CPU">CPU</InputLabel> */}
                                 <Select
+                                    className="mr-0 mr-md-3"
                                     sx={{
                                         backgroundColor: "#e9eeff",
-                                        mr: 2
                                     }}
                                     value={cpu}
                                     size="small"
@@ -281,14 +282,15 @@ export const MachineManagementTable = () => {
                             </FormControl>
                         </Grid>
                         <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
+                            <label>Age</label>
                             <FormControl fullWidth sx={{
                                 mb: 2
                             }}>
-                                <InputLabel id="node">Age</InputLabel>
+                                {/* <InputLabel id="node">Age</InputLabel> */}
                                 <Select
+                                    className="mr-0 mr-md-3"
                                     sx={{
                                         backgroundColor: "#e9eeff",
-                                        mr: 2
                                     }}
                                     labelId="node"
                                     id="demo-simple-select"
@@ -309,7 +311,7 @@ export const MachineManagementTable = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <Grid xs={12} sm={12} md={6} lg={6} xl={2} sx={{ display: "flex", justifyContent: "flex-end" }}>
+                        <Grid xs={12} sm={12} md={6} lg={6} xl={2} sx={{ display: "flex", justifyContent: "flex-end", alignItems: "end" }}>
                             <TextField sx={{
                                 backgroundColor: "#e9eeff",
                                 mr: 2,
@@ -319,17 +321,18 @@ export const MachineManagementTable = () => {
                                 onChange={(e) => {
                                     setSearchQuery(e.target.value);
                                 }}
+                                className="mt-md-3"
                             />
                             {
                                 fullScreen ?
-                                    <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                    <Button variant="contained" sx={{ mb: 2, py: 1 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
                                         exitFullScreen(setFullScreen)
-                                    }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" sx={{ mb: 2 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
+                                    }}><CloseFullscreenIcon /> </Button> : <Button variant="contained" sx={{ mb: 2, py: 1 }} style={{ backgroundColor: "#e9eeff", color: "#000" }} onClick={() => {
                                         goFullScreen("tableContainer", setFullScreen)
                                     }}>  <OpenInFullIcon />  </Button>
                             }
                             <Button variant="contained"
-                                sx={{ ml: 2, mb: 2 }}
+                                sx={{ ml: 2, mb: 2, py: 1 }}
                                 style={{ backgroundColor: "#e9eeff", color: "#000" }}
                             >  <Download />  </Button>
                         </Grid>
