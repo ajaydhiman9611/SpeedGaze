@@ -54,16 +54,6 @@ export const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ">
-                    <li className="nav-item">
-                        <span className="nav-link">
-                            <select class="custom-select" id="regionSelection">
-                                <option selected>Choose...</option>
-                                <option value="1">CPU Region</option>
-                            </select>
-                        </span>
-                    </li>
-                </ul>
                 <ul className="navbar-nav ml-auto navbar_right">
                     {/* <li className="nav-item active mr-lg-4">
                         <span className="nav-link"><input class="form-control mr-sm-2 headerSearch" type="search" placeholder="Search" aria-label="Search" /></span>

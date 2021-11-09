@@ -43,7 +43,7 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                     {addOrEdit} a Machine.
                 </Typography>
                 <br />
-                <div id="modal-modal-description" className={`bg-${themeState}`} sx={{ mt: 2 }} style={{ padding: "0 5% 5% 5%" }}>
+                <div id="modal-modal-description" className={`bg-${themeState}`} sx={{ mt: 2 }} style={{ padding: "0 5% 0% 5%" }}>
                     <div className="row onSmallScreen" style={{ paddingTop: "20px" }}>
                         <div className="col-lg-6 col-sm-12 col-xs-12">
                             <TextField className={`font-${themeState} smallScreenTextField`} onChange={handleChange} id="outlined-basic" label="Display Name" name="display_Name" variant="outlined" value={modalData.display_Name || ""} />
@@ -75,7 +75,7 @@ export default function AddorEditModal({ open, handleClose, addOrEdit, data }) {
                         </div>
                     </div>
                 </div>
-                <div align="right" style={{ padding: "5% 5% 5% 5%" }}>
+                <div align="right" style={{ padding: "3% 5% 3% 5%" }}>
                     <Button variant="outlined" onClick={handleClose}>Cancel</Button> &nbsp; &nbsp; &nbsp;
                     <Button variant="contained" onClick={handleClose}>Submit</Button>
                 </div>
