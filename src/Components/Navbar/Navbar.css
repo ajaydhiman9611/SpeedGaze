@@ -1,85 +1,89 @@
-#navbar_top{
-    padding: 0px !important;
-}
-
-.nav-item{
-    margin-right: 30px;
-}
-.shadow_custom {
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-}
-
-.brand_logo {
-    padding: 15px;
-    background-color: #fff;
-    width: 11%;
-    min-width: 120px;
-}
-
-.headerSearch {
-    border-radius: 25px;
-    height: 30px;
-    min-width: 200px;
-}
-
-#regionSelection {
-    height: 30px;
-    min-width: 250px;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
-
-.fixed-top {
-    top: -40px;
-    transform: translateY(40px);
-    transition: transform .3s;
-}
-#hideOnLargerScreen {
-    display: none;
+#navbar_top {
+  padding: 0px !important;
 }
 
 .nav-item {
-    cursor: pointer;
+  margin-right: 20px;
+}
+.shadow_custom {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.brand_logo {
+  padding: 15px;
+  background-color: #fff;
+  width: 11%;
+  min-width: 120px;
+}
+
+.headerSearch {
+  border-radius: 25px;
+  height: 30px;
+  min-width: 200px;
+}
+
+#regionSelection {
+  height: 30px;
+  min-width: 250px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.fixed-top {
+  top: -40px;
+  transform: translateY(40px);
+  transition: transform 0.3s;
+}
+
+#hideOnLargerScreen {
+  display: none;
+}
+
+.nav-item {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 991px) {
+  #hideOnLargerScreen {
+    display: inline;
+    padding-left: 20px;
+  }
 
-    #hideOnLargerScreen {
-        display: inline;
-        padding-left: 20px;
-    }
+  .themeBar > svg {
+    margin-top: 19px;
+  }
 
-    .themeBar>svg {
-        margin-top: 19px;
-    }
+  .MuiTextField-root {
+    width: 100%;
+  }
 
-    .MuiTextField-root {
-        width: 100%;
-    }
+  .navbar_right .nav-item {
+    margin-right: 0;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .navbar_right .nav-item {
-        margin-right: 0;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .navbar_right .nav-item:last-child {
-        margin-right: 0;
-        border-bottom: 0px solid #ddd;
-    }
+  .navbar_right .nav-item:last-child {
+    margin-right: 0;
+    border-bottom: 0px solid #ddd;
+  }
 }
 
 .themeBar {
-    margin-right: 25px;
+  margin-right: 20px;
 }
 
-.themeBar>svg {
-    margin-top: 9px;
+.themeBar > svg {
+  margin-top: 9px;
+}
+
+.navbar-nav > .nav-item {
+    padding-left: 20px;
 }
