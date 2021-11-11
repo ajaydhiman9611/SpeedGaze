@@ -56,7 +56,7 @@ export const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto navbar_right">
+                <ul className="navbar-nav ml-auto navbar_right" style={{ marginRight: "20px"}}>
                     {/* <li className="nav-item active mr-lg-4">
                         <span className="nav-link"><input class="form-control mr-sm-2 headerSearch" type="search" placeholder="Search" aria-label="Search" /></span>
                     </li> */}
