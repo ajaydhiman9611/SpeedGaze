@@ -90,13 +90,15 @@ export const Navbar = () => {
                         </span>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span className="nav-link d-flex align-items-center">
                             <PersonIcon /> <span id="hideOnLargerScreen">Hello Rahul</span>
-                        </a>
+                        </span>
+                        {/* <a class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> */}
+                        {/* </a>
                         <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item">Profile</a>
                             <a class="dropdown-item">Logout</a>
-                        </div>
+                        </div> */}
                     </li>
                 </ul>
             </div>
