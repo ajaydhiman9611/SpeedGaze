@@ -26,7 +26,7 @@ import { Button, TextField } from '@mui/material';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import Download from '@mui/icons-material/Download';
-
+import AddIcon from '@mui/icons-material/Add';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
@@ -228,14 +228,25 @@ export const MachineManagementTable = () => {
     const renderDropDown = (id) => {
         let result = data.map(a => a[id])
             .filter((value, index, self) => self.indexOf(value) === index)
-        return result.map((val, id) => {
+        console.log("Result : ", result)
+        return result.map(val => {
+            console.log("Val is this : ", val)
             return (
-                <MenuItem value={val}>
-                    <em>{val}</em>
-                </MenuItem>
+                <option value={val}>
+                    {val}
+                </option>
             )
         })
     }
+
+    const lightStyle = {
+        background: "#f2f2f2"
+    }
+    const darkStyle = {
+        background: "#212529",
+        color: "#fff"
+    }
+
     return (
         <>
             {modal.open &&
@@ -245,157 +256,123 @@ export const MachineManagementTable = () => {
                     addOrEdit={modal.addOrEdit}
                     data={modal.data}
                 />}
-            <Box id="tableContainer" className={`bg-${themeState}`} sx={{
-                width: '100%',
-                height: fullScreen ? "100%" : "auto",
-                // backgroundColor: "#fff",
-                overflowY: fullScreen ? "auto" : "unset",
-                padding: fullScreen ? "20px" : "0"
-            }}>
-                <Box className={`bg-${themeState}`} sx={{ width: '100%', mb: 1, justifyContent: "space-between", display: "flex" }} >
-                    <Grid container>
-                        <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
-                            <label>CPU</label>
-                            <FormControl fullWidth sx={{
-                                mb: 2
-                            }} >
-                                {/* <InputLabel id="CPU">CPU</InputLabel> */}
-                                <Select
-                                    className="mr-0 mr-md-3 filterSelect"
-                                    sx={{
-                                        backgroundColor: "#e9eeff",
-                                        mr: 2,
-                                        fontFamily: "acumin-pro, sans-serif"
-                                    }}
-                                    value={cpu}
-                                    size="small"
-                                    label="CPU"
-                                    labelId="CPU"
-                                    onChange={(event) => {
-                                        setCpu(event.target.value)
-                                    }}
-                                >
-                                    <MenuItem value=" ">
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <FilterAltIcon />
-                                            <div>None</div>
-                                        </div>
-                                    </MenuItem>
-                                    {renderDropDown("CPU")}
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                        <Grid xs={12} sm={12} md={3} lg={3} xl={2}>
-                            <label>Node Type</label>
-                            <FormControl fullWidth sx={{
-                                mb: 2
-                            }}>
-                                {/* <InputLabel id="node">Age</InputLabel> */}
-                                <Select
-                                    className="mr-0 mr-md-3 filterSelect"
-                                    sx={{
-                                        backgroundColor: "#e9eeff",
-                                        mr: 2,
-                                        fontFamily: "acumin-pro, sans-serif"
-                                    }}
-                                    labelId="node"
-                                    id="demo-simple-select"
-                                    size="small"
-                                    value={nodeType}
-                                    label="Node Type"
-                                    onChange={(event) => {
-                                        setNodeType(event.target.value)
-                                    }}
-                                >
-                                    <MenuItem value=" ">
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <FilterAltIcon />
-                                            <div>None</div>
-                                        </div>
-                                    </MenuItem>
-                                    {renderDropDown("Node_Type")}
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                        <Grid xs={12} sm={12} md={6} lg={6} xl={2} sx={{ display: "flex", justifyContent: "flex-end", alignItems: "end" }}>
-                            <TextField
-                                className={`font-${themeState}`}
-                                sx={{
-                                    backgroundColor: "#e9eeff",
-                                    mr: 2,
-                                    mb: 2
-                                }} size="small"
-                                label="Search"
-                                onChange={(e) => {
-                                    setSearchQuery(e.target.value);
-                                }}
-                                className="mt-md-3"
-                            />
-                            {
-                                fullScreen ?
-                                    <Button className="btnsHover" variant="contained" sx={{ mb: 2, py: 1 }} style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
-                                        exitFullScreen(setFullScreen)
-                                    }}><CloseFullscreenIcon /> </Button> : <Button className="btnsHover" variant="contained" sx={{ mb: 2, py: 1 }} style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
-                                        goFullScreen("tableContainer", setFullScreen)
-                                    }}>  <OpenInFullIcon />  </Button>
-                            }
-                            <Button className="btnsHover" variant="contained"
-                                sx={{ ml: 2, mb: 2, py: 1 }}
-                                style={{ backgroundColor: "#00bdf2", color: "#000" }}
-                            >  <Download />  </Button>
-                        </Grid>
-                    </Grid>
-                </Box>
-                {/* <Paper sx={{ width: '100%', mb: 2 }}> */}
-                <div className={`card bg-${themeState === 'light' ? `light` : `darker`}`}>
-                    <div className="card-body">
-                        <table className={`table table-responsive align-middle table-nowrap table-check ${themeState === 'light' ? `` : `table-dark`} font-${themeState}`}>
-                            <thead className={`table-${themeState === 'light' ? `light` : `darker`}`}>
-                                <tr>
-                                    {headCells.map((headCell, i) => <th scope="col" style={{ width: "auto" }}>{headCell}</th>)}
-                                </tr>
-                            </thead>
-                            <tbody style={{ borderBottom: "1px solid #f0f0f0" }}>
-                                {datas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .map((row, index) => {
-                                        return (
-                                            <tr key={index}>
-                                                <td className={`td td-${themeState}`} >{row.display_Name}</td>
-                                                <td className={`td td-${themeState}`} >{row.node_Name}</td>
-                                                <td className={`td td-${themeState}`} >{row.node_IP}</td>
-                                                <td className={`td td-${themeState}`} >{row.RAM}</td>
-                                                <td className={`td td-${themeState}`} >{row.CPU}</td>
-                                                <td className={`td td-${themeState}`} >{row.Rack}</td>
-                                                <td className={`td td-${themeState}`} >{row.Mac_Address}</td>
-                                                <td className={`td td-${themeState}`} >{row.Node_Type}</td>
-                                                <td className={`td td-${themeState}`} style={{paddingLeft: "0px !important"}}>
-                                                    <Button onClick={() => handleOpen(row)}>
-                                                        <EditIcon />
-                                                        <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
-                                                    </Button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </table>
-                        <TablePagination
-                            className={`bg-${themeState} font-${themeState}`}
-                            style={{ fontFamily: "acumin-pro, sans-serif !important" }}
-                            rowsPerPageOptions={[5, 10, 15, 20, 25]}
-                            component="div"
-                            count={datas.length}
-                            labelRowsPerPage={"Rows: "}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                        />
+
+            <div className={`card bg-${themeState === 'light' ? `light` : `darker`}`} id="tableContainer">
+                <div className="card-header" style={themeState === 'light' ? lightStyle : darkStyle}>
+                    <div className="row">
+                        <div style={{ marginBottom: "0px" }} className="col-lg-9 col-md-9 col-sm-12 col-xs-12 align-self-center">
+                            <div className="row justify-content-lg-start">
+                                <div style={{ marginBottom: "0px" }} className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <label>CPU:</label>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <select
+                                        className="mr-0 mr-md-3 filterSelect form-select w-100 p-2"
+                                        value={cpu}
+                                        size="small"
+                                        label="CPU"
+                                        labelId="CPU"
+                                        onChange={(event) => {
+                                            setCpu(event.target.value)
+                                        }}
+                                    >
+                                        <option value=" ">
+                                            None
+                                        </option>
+                                        {renderDropDown("CPU")}
+                                    </select>
+                                </div>
+                                <div style={{ marginBottom: "0px" }} className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3 mt-md-0">
+                                    <label>Node Type:</label>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <select
+                                        className="mr-0 mr-md-3 filterSelect w-100 p-2"
+                                        value={nodeType}
+                                        label="Node Type"
+                                        onChange={(event) => {
+                                            setNodeType(event.target.value)
+                                        }}
+                                    >
+                                        <option value=" ">
+                                            None
+                                        </option>
+                                        {renderDropDown("Node_Type")}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ marginBottom: "0px" }} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 pr-4 align-self-center mt-4 mt-md-0">
+                            <div className="row align-items-center">
+                                <div className="col-lg-6 col-md-6 col-sm-7 col-xs-7">
+                                    <TextField
+                                        style={{ marginLeft: "auto" }}
+                                        // className={`font-${themeState}`}
+                                        sx={{
+                                            backgroundColor: "#e9eeff",
+                                        }} size="small"
+                                        label="Search"
+                                        onChange={(e) => {
+                                            setSearchQuery(e.target.value);
+                                        }}
+                                    />
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-5 col-xs-5 mt-4 mt-md-0">
+                                    <button
+                                        className="btnsHover btn btn-md btn-block"
+                                        style={{ width: "100%", backgroundColor: "#00bdf2", color: "#fff", verticalAlign: "middle" }}
+                                    > <AddIcon style={{ verticalAlign: "text-top" }} /> Add New </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <br />
-                {/* <TableContainer>
+                <div className="card-body">
+                    <table className={`table table-responsive align-middle table-nowrap table-check ${themeState === 'light' ? `` : `table-dark`} font-${themeState}`}>
+                        <thead className={`table-${themeState === 'light' ? `light` : `darker`}`}>
+                            <tr>
+                                {headCells.map((headCell, i) => <th scope="col" style={{ width: "auto" }}>{headCell}</th>)}
+                            </tr>
+                        </thead>
+                        <tbody style={{ borderBottom: "1px solid #f0f0f0" }}>
+                            {datas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .map((row, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td className={`td td-${themeState}`} >{row.display_Name}</td>
+                                            <td className={`td td-${themeState}`} >{row.node_Name}</td>
+                                            <td className={`td td-${themeState}`} >{row.node_IP}</td>
+                                            <td className={`td td-${themeState}`} >{row.RAM}</td>
+                                            <td className={`td td-${themeState}`} >{row.CPU}</td>
+                                            <td className={`td td-${themeState}`} >{row.Rack}</td>
+                                            <td className={`td td-${themeState}`} >{row.Mac_Address}</td>
+                                            <td className={`td td-${themeState}`} >{row.Node_Type}</td>
+                                            <td className={`td td-${themeState}`} style={{ paddingLeft: "0px !important" }}>
+                                                <Button onClick={() => handleOpen(row)}>
+                                                    <EditIcon />
+                                                    <span style={{ paddingTop: "-10px" }}>&nbsp;Edit</span>
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                    <TablePagination
+                        className={`bg-${themeState} font-${themeState}`}
+                        style={{ fontFamily: "acumin-pro, sans-serif !important" }}
+                        rowsPerPageOptions={[5, 10, 15, 20, 25]}
+                        component="div"
+                        count={datas.length}
+                        labelRowsPerPage={"Rows: "}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </div>
+            </div>
+            <br />
+            {/* <TableContainer>
                         <Table className={`${themeState === 'light' ? `table-striped` : `table-dark`} font-${themeState}`}>
                             <EnhancedTableHead
                                 numSelected={selected.length}
@@ -439,7 +416,7 @@ export const MachineManagementTable = () => {
                             </TableBody>
                         </Table>
                     </TableContainer> */}
-                {/* <TablePagination
+            {/* <TablePagination
                     className={`bg-${themeState} font-${themeState}`}
                     style={{ fontFamily: "acumin-pro, sans-serif !important" }}
                     rowsPerPageOptions={[5, 10, 25]}
@@ -450,8 +427,7 @@ export const MachineManagementTable = () => {
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 /> */}
-                {/* </Paper> */}
-            </Box>
+            {/* </Paper> */}
         </>
     )
 }

@@ -18,25 +18,25 @@ export const Navbar = () => {
     const { themeState } = themeContext;
 
     useEffect(() => {
-        document.addEventListener("DOMContentLoaded", function () {
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 0) {
-                    document.getElementById('navbar_top').classList.add('fixed-top');
-                    // add padding top to show content behind navbar
-                    let navbar_height = document.querySelector('.navbar').offsetHeight;
-                    document.body.style.paddingTop = navbar_height + 'px';
-                } else {
-                    if (document.getElementById('navbar_top')) {
-                        document.getElementById('navbar_top').classList.remove('fixed-top');
-                        // remove padding top from body
-                        document.body.style.paddingTop = '0';
-                    }
-                }
-            });
-        });
-        return () => {
-            document.removeEventListener("DOMContentLoaded", () => { });
-        }
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     window.addEventListener('scroll', function () {
+        //         if (window.scrollY > 0) {
+        //             document.getElementById('navbar_top').classList.add('fixed-top');
+        //             // add padding top to show content behind navbar
+        //             let navbar_height = document.querySelector('.navbar').offsetHeight;
+        //             document.body.style.paddingTop = navbar_height + 'px';
+        //         } else {
+        //             if (document.getElementById('navbar_top')) {
+        //                 document.getElementById('navbar_top').classList.remove('fixed-top');
+        //                 // remove padding top from body
+        //                 document.body.style.paddingTop = '0';
+        //             }
+        //         }
+        //     });
+        // });
+        // return () => {
+        //     document.removeEventListener("DOMContentLoaded", () => { });
+        // }
     }, [])
 
     const changeTheme = () => {
@@ -46,7 +46,9 @@ export const Navbar = () => {
     }
 
     return (
-        <nav id="navbar_top" className="navbar navbar-expand-lg navbar-light shadow_custom p-3 mb-5 bg-white">
+        <nav
+            style={{ padding: "0px", position: "fixed", overflow: "hidden", top: "0", width: "100%", zIndex: "999" }}
+            className="navbar navbar-expand-lg navbar-light shadow_custom bg-white navbar-fixed-top">
             <a class="navbar-brand brand_logo">
                 <img src={logo} alt="" className="img-fluid" />
             </a>
