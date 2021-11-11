@@ -2,9 +2,6 @@
   padding: 0px !important;
 }
 
-.nav-item {
-  margin-right: 5px;
-}
 .shadow_custom {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
@@ -74,10 +71,6 @@
     margin-right: 0;
     border-bottom: 0px solid #ddd;
   }
-}
-
-.themeBar {
-  margin-right: 5px;
 }
 
 .themeBar > svg {
