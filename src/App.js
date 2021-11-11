@@ -4,6 +4,7 @@ import { Navbar } from './Components/Navbar/Navbar';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeContext } from './context/ThemeContext'
 import './App.css';
+import { Footer } from './Components/Footer/Footer';
 
 function App() {
 
@@ -33,6 +34,9 @@ const PageToRender = () => {
       <section className="container-fluid" style={{marginTop: "100px"}}>
         <MachineManagement />
       </section>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }

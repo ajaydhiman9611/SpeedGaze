@@ -308,7 +308,7 @@ export const MachineManagementTable = (props) => {
                                         style={{ marginLeft: "auto" }}
                                         // className={`font-${themeState}`}
                                         sx={{
-                                            backgroundColor: "#e9eeff",
+                                            backgroundColor: "transparent",
                                         }} size="small"
                                         label="Search"
                                         onChange={(e) => {
