@@ -116,8 +116,9 @@ function fs_status() {
 
 const headCells = ["Display Name", "Node name", "Node IP", "RAM", "CPU", "Rack", "Mac Address", "Node type", "Actions"];
 
-export const MachineManagementTable = () => {
+export const MachineManagementTable = (props) => {
 
+    console.log("Props: ", props);
     const themeContext = useContext(ThemeContext);
     const { themeState } = themeContext;
 
@@ -203,7 +204,7 @@ export const MachineManagementTable = () => {
     // it calls every time when we exit from fullscreen and set "setFullScreen()" to false
     function onExitFullScreen() {
         if (fs_status() === -1) {
-            setFullScreen(false)
+            props.setFullScreen(false)
         }
     }
 
@@ -260,9 +261,9 @@ export const MachineManagementTable = () => {
             <div className={`card bg-${themeState === 'light' ? `light` : `darker`}`} id="tableContainer">
                 <div className="card-header" style={themeState === 'light' ? lightStyle : darkStyle}>
                     <div className="row">
-                        <div style={{ marginBottom: "0px" }} className="col-lg-9 col-md-9 col-sm-12 col-xs-12 align-self-center">
+                        <div style={{ marginBottom: "0px" }} className="col-lg-6 col-md-6 col-sm-12 col-xs-12 align-self-end">
                             <div className="row justify-content-lg-start">
-                                <div style={{ marginBottom: "0px" }} className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div style={{ marginBottom: "0px" }} className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <label>CPU:</label>
                                     &nbsp;&nbsp;&nbsp;
                                     <select
@@ -281,7 +282,7 @@ export const MachineManagementTable = () => {
                                         {renderDropDown("CPU")}
                                     </select>
                                 </div>
-                                <div style={{ marginBottom: "0px" }} className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3 mt-md-0">
+                                <div style={{ marginBottom: "0px" }} className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3 mt-md-0">
                                     <label>Node Type:</label>
                                     &nbsp;&nbsp;&nbsp;
                                     <select
@@ -300,9 +301,9 @@ export const MachineManagementTable = () => {
                                 </div>
                             </div>
                         </div>
-                        <div style={{ marginBottom: "0px" }} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 pr-4 align-self-center mt-4 mt-md-0">
-                            <div className="row align-items-center">
-                                <div className="col-lg-6 col-md-6 col-sm-7 col-xs-7">
+                        <div style={{ marginBottom: "0px" }} className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-4 mt-4 mt-md-0 d-flex justify-content-end">
+                            <div className="row align-items-end justify-content-md-end">
+                                <div className="col-lg-5 col-md-6 col-12">
                                     <TextField
                                         style={{ marginLeft: "auto" }}
                                         // className={`font-${themeState}`}
@@ -315,12 +316,20 @@ export const MachineManagementTable = () => {
                                         }}
                                     />
                                 </div>
-                                <div className="col-lg-6 col-md-6 col-sm-5 col-xs-5 mt-4 mt-md-0">
+                                <div className="col-lg-5 col-md-6 col-9 mt-4 mt-md-0">
                                     <button
                                         className="btnsHover btn btn-md btn-block"
                                         style={{ width: "100%", backgroundColor: "#00bdf2", color: "#fff", verticalAlign: "middle" }}
                                     > <AddIcon style={{ verticalAlign: "text-top" }} /> Add New </button>
                                 </div>
+                                {
+                                    props?.fullScreen &&
+                                    <div className="col-lg-2 col-md-6 col-3 mt-4 mt-md-0 ">
+                                        <Button className="btnsHover" variant="contained" sx={{ py: 1 }} style={{ backgroundColor: "#00bdf2", color: "#000" }} onClick={() => {
+                                            props.exitFullScreen(props.setFullScreen)
+                                        }}><CloseFullscreenIcon /> </Button>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
