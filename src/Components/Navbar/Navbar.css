@@ -3,7 +3,7 @@
 }
 
 .nav-item {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 .shadow_custom {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
@@ -29,7 +29,7 @@
   padding-bottom: 0;
 }
 
-.fixed-top {
+/* .fixed-top {
   position: fixed;
   top: 0;
   right: 0;
@@ -41,7 +41,7 @@
   top: -40px;
   transform: translateY(40px);
   transition: transform 0.3s;
-}
+} */
 
 #hideOnLargerScreen {
   display: none;
@@ -77,7 +77,7 @@
 }
 
 .themeBar {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .themeBar > svg {

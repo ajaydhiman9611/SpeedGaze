@@ -30,7 +30,7 @@ const PageToRender = () => {
       <header>
         <Navbar />
       </header>
-      <section className="container-fluid">
+      <section className="container-fluid" style={{marginTop: "100px"}}>
         <MachineManagement />
       </section>
     </div>
