@@ -34,7 +34,7 @@ const PageToRender = () => {
       <section className="container-fluid" style={{marginTop: "100px"}}>
         <MachineManagement />
       </section>
-      <footer>
+      <footer style={{position: "fixed", bottom: "0", width: "100%"}}>
         <Footer />
       </footer>
     </div>
