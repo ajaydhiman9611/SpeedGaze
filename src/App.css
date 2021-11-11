@@ -94,9 +94,9 @@ input:checked + .slider:before {
 
 /* ---------------------- Theme Slider ---------------------------------- */
 
-.filterSelect {
+/* .filterSelect {
   outline: grey solid 2px;
-}
+} */
 .filterSelect > option{
   max-width: 100px !important;
 }
