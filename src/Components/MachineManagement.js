@@ -93,7 +93,7 @@ export const MachineManagement = () => {
                     </div>
                 </div>
             </div>
-            <MachineManagementTable />
+            <MachineManagementTable fullScreen={fullScreen} exitFullScreen={exitFullScreen} setFullScreen={setFullScreen}  />
         </div>
     )
 }
